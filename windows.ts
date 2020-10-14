@@ -121,14 +121,14 @@ function DibujarObstaculos() {
     let imgArbol = document.getElementById("obstaculo");
     let ultPos;
     for (let i in obstaculos) {
-        if (obstaculo[i].posX >= (-obstaculo[i].ancho)) {
-            obstaculo[i].posX -= velocidadJuego;
-            ctx.drawImage(imgobstaculo, obstaculo[i].posX, obstaculo[i].posY, obstaculo[i].ancho, obstaculo[i].altura);
-            if ((obstaculo[i].posX <= dinosaurio.posX) && (obstaculo[i].posX > (dinosaurio.posX - velocidadJuego))) ArbolesSaltados++;
+        if (obstaculos[i].posX >= (-obstaculos[i].ancho)) {
+            obstaculos[i].posX -= velocidadJuego;
+            ctx.drawImage(imgobstaculo, obstaculos[i].posX, obstaculos[i].posY, obstaculos[i].ancho, obstaculos[i].altura);
+            if ((obstaculos[i].posX <= dinosaurio.posX) && (obstaculos[i].posX > (dinosaurio.posX - velocidadJuego))) ArbolesSaltados++;
         }
         ultPos = i;
     }
-    if (obstaculo[ultPos].posX < (canvas.width - 180)) CrearSigArbol = true;
+    if (obstaculos[ultPos].posX < (canvas.width - 180)) CrearSigArbol = true;
 }
 
 /**
