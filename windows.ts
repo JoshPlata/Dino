@@ -1,3 +1,11 @@
+//Variables y propiedades
+let BoolSaltar:boolean=false;
+let Canvas;
+let velocidadJuego:number=5;
+let puntos:number=0;
+let ctx;
+let CorrerJuego=true;
+
 interface Sprite{
     id: number;
     altura: number;
@@ -72,6 +80,100 @@ class Elemento implements Sprite,Mov {
     }
     set gimagen(val: string){
         this.imagen=val;
-    }
+    } 
 }
 
+let dinosaurio = new Elemento();  
+let Obstaculo = new Elemento();  
+let Obstaculo2 = new Elemento();  
+let Fondo = new Elemento();  
+
+
+/**
+ *  Pintar el dinosaurio en el escenario, en una posicion establecida.
+ *  Se modificara solamente y.
+ */
+function iniciarDino(){
+    /**
+     *  Crear el objeto que se pintara.
+     */          
+    dinosaurio.gid=1;
+    dinosaurio.galtura=30;
+    dinosaurio.gancho=38;
+    dinosaurio.gposX=Canvas.width/2 -100;
+    dinosaurio.gposY=Canvas.height/2+30;
+    dinosaurio.gnombre="Dino";
+    dinosaurio.gimagen="";        
+}
+
+   /**
+ * @author Dan
+ * Funcion que inicia el Canvas
+ */
+
+function Inicio(){
+	Canvas = document.getElementById("juego");
+    ctx = Canvas.getContext("2d");
+    iniciarDino();		
+	AgregarEventoTeclado();
+	window.setInterval(function(){dinoLoop()},1000/50);
+}
+
+let dinoLoop = function():void{    
+    if(CorrerJuego){        
+        pintarDino();        
+        SubirVelocidadJuego();                      
+    }
+    return;  
+}
+
+
+/**
+* @author Dan
+* Funcion que escucha el teclado
+*/
+function AgregarEventoTeclado():void{
+    window.onkeydown = function(evt){
+        switch(evt.keyCode){
+            case 32:
+                if(!BoolSaltar){
+                    //movSalto-=velocidadJuego;
+                    BoolSaltar=true;
+                }
+            break;
+           
+        }
+    }
+    return;
+}
+
+/**
+* @author Dan
+* Funcion que sube la velocidad de juego dependiendo los puntos
+*/
+function SubirVelocidadJuego():void{
+    if(puntos<=300) velocidadJuego=6;
+    if(puntos>300){
+
+        //Divide los puntos entre 100 y entre tres para que aumente la velocidad cada 300 puntos
+        //300 =1, 600=2, 900=3, etc.
+        let rel:number = (puntos / 100)/3;
+        velocidadJuego=6+rel;
+    }     
+    if(puntos==5000){
+        velocidadJuego=0;
+        alert("Ganaste");
+    }
+   
+    return;
+}
+
+/**
+ *  Pintar dino con base en las posiciones senaladas desde la clase.
+ */
+function pintarDino(){
+    var d = document.getElementById("dino");
+    ctx.drawImage(d, dinosaurio.gposX, dinosaurio.gposY, dinosaurio.gancho, dinosaurio.galtura);
+}
+
+Inicio();
