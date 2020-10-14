@@ -4,6 +4,7 @@ let Canvas;
 let velocidadJuego:number=5;
 let puntos:number=0;
 let ctx;
+let CorrerJuego=true;
 
 interface Sprite{
     id: number;
@@ -83,9 +84,10 @@ class Elemento implements Sprite,Mov {
 }
 
 let dinosaurio = new Elemento();  
-let Obstaculo= new Elemento();  
-let Obstaculo2= new Elemento();  
-let Fondo= new Elemento();  
+let Obstaculo = new Elemento();  
+let Obstaculo2 = new Elemento();  
+let Fondo = new Elemento();  
+window.addEventListener("load",Inicio);
 
 /**
  *  Pintar el dinosaurio en el escenario, en una posicion establecida.
@@ -116,8 +118,21 @@ function Inicio(){
 	//PisoX = canvas.width/2 -100;
 	//PisoY = canvas.height/2+30;	
 	AgregarEventoTeclado();
-	//window.setInterval(function(){FrameLoop()},1000/50);
+	window.setInterval(function(){dinoLoop()},1000/50);
 }
+
+let dinoLoop = function():void{    
+    if(CorrerJuego){
+        //obtenerPuntuacion();        
+        //dibujarFondo();
+        pintarDino();
+        //dibujarObstaculos();     
+        SubirVelocidadJuego();  
+        //revisarColisiones();
+        return;      
+    }
+}
+
 
 /**
 * @author Dan
@@ -157,15 +172,14 @@ function SubirVelocidadJuego():void{
     return;
 }
 
-
-
-
-
-let dinoLoop(): function():void{    
-    revisarColisiones();
-    obtenerPuntuacion();        
-    dibujarFondo();
-    dibujarPersonaje();
-    dibujarObstaculos();         
-    return;
+/**
+ *  Pintar dino con base en las posiciones senaladas desde la clase.
+ */
+function pintarDino(){
+    var d = document.getElementById("dino");
+    ctx.drawImage(d, dinosaurio.gposX, dinosaurio.gposY, dinosaurio.gancho, dinosaurio.galtura);
 }
+
+
+
+
