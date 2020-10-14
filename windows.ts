@@ -98,10 +98,10 @@ function iniciarDino(){
      *  Crear el objeto que se pintara.
      */          
     dinosaurio.gid=1;
-    dinosaurio.galtura=38;
-    dinosaurio.gancho=30;
+    dinosaurio.galtura=50;
+    dinosaurio.gancho=50;
     dinosaurio.gposX=0;
-    dinosaurio.gposY=30;
+    dinosaurio.gposY=100;
     dinosaurio.gnombre="Dino";
     dinosaurio.gimagen="";        
 }
@@ -115,22 +115,17 @@ function Inicio(){
 	Canvas = document.getElementById("juego");
     ctx = Canvas.getContext("2d");
     iniciarDino();
-	//PisoX = canvas.width/2 -100;
-	//PisoY = canvas.height/2+30;	
+		
 	AgregarEventoTeclado();
 	window.setInterval(function(){dinoLoop()},1000/50);
 }
 
 let dinoLoop = function():void{    
-    if(CorrerJuego){
-        //obtenerPuntuacion();        
-        //dibujarFondo();
-        pintarDino();
-        //dibujarObstaculos();     
-        SubirVelocidadJuego();  
-        //revisarColisiones();
-        return;      
+    if(CorrerJuego){        
+        pintarDino();        
+        SubirVelocidadJuego();                      
     }
+    return;  
 }
 
 
@@ -179,7 +174,5 @@ function pintarDino(){
     var d = document.getElementById("dino");
     ctx.drawImage(d, dinosaurio.gposX, dinosaurio.gposY, dinosaurio.gancho, dinosaurio.galtura);
 }
-
-
 
 
