@@ -1,3 +1,10 @@
+//Variables y propiedades
+let BoolSaltar:boolean=false;
+let Canvas;
+let velocidadJuego:number=5;
+let puntos:number=0;
+
+//Interfaces
 interface Sprite{
     id: number;
     altura: number;
@@ -73,5 +80,70 @@ class Elemento implements Sprite,Mov {
     set gimagen(val: string){
         this.imagen=val;
     }
+
 }
+
+    /**
+     * Aqui empiezan las funciones
+     */
+
+  
+     
+
+
+     /**
+ * @author Dan
+ * Funcion que inicia el Canvas
+ */
+
+    function Inicio():void{
+        
+        AgregarEventoTeclado();
+        Canvas = document.getElementById("juego");
+        /*window.setInterval(function(){
+            FrameLoop()},1000/50);
+    }*/
+
+    }
+
+/**
+ * @author Dan
+ * Funcion que escucha el teclado
+ */
+function AgregarEventoTeclado():void{
+        window.onkeydown = function(evt){
+            switch(evt.keyCode){
+                case 32:
+                    if(!BoolSaltar){
+                        //movSalto-=velocidadJuego;
+                        BoolSaltar=true;
+                    }
+                break;
+               
+            }
+        }
+        return;
+    }
+
+    /**
+ * @author Dan
+ * Funcion que sube la velocidad de juego dependiendo los puntos
+ */
+    function SubirVelocidadJuego():void{
+        if(puntos==300) velocidadJuego=7;
+        if(puntos==600) velocidadJuego=8;
+        if(puntos==900) velocidadJuego=9;
+        if(puntos==1200) velocidadJuego=10;
+        if(puntos==1500) velocidadJuego=11;
+        if(puntos==1800) velocidadJuego=12;
+        if(puntos==2100) velocidadJuego=13;
+        if(puntos==2400) velocidadJuego=14;
+        if(puntos==2700) velocidadJuego=15;
+        if(puntos==3000) velocidadJuego=16;
+
+        return;
+    }
+
+    
+
 
