@@ -5,6 +5,7 @@ let velocidadJuego:number=5;
 let puntos:number=0;
 let ctx;
 let CorrerJuego=true;
+let PisoY;
 
 interface Sprite {
     id: number;
@@ -119,7 +120,7 @@ function CrearObstaculo() {
  * Dibujamos el obstaculo
  */
 function DibujarObstaculos() {
-    let imgArbol = document.getElementById("obstaculo");
+    let imgobstaculo = document.getElementById("obstaculo");
     let ultPos;
     for (let i in obstaculos) {
         if (obstaculos[i].posX >= (-obstaculos[i].ancho)) {
