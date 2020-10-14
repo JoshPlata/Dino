@@ -82,9 +82,60 @@ class Elemento implements Sprite,Mov {
 }
 
 let dinosaurio = new Elemento();  
-let Obstaculo= new Elemento();  
-let Obstaculo2= new Elemento();  
+//let Obstaculo= new Elemento();
+//let Obstaculo2= new Elemento();
 let Fondo= new Elemento();  
+
+let obstaculos: Elemento[] = [];
+let CrearSigArbol = true;
+let ArbolesSaltados = 0;
+
+/**
+ *  Crea los obstaculos y los metemos en un arreglo
+ */
+function CrearObstaculo() {
+	if (CrearSigArbol) {
+		let obstaculo1 = new Elemento();
+		let aleatorio: number = Math.random() * ((canvas.width + 200) - canvas.width) + canvas.width;
+		//let aleatorio: number = 100;
+		obstaculo1.gposX = aleatorio;
+		obstaculo1.gposY = PisoY - 35,
+		obstaculo1.ancho = 50;
+		obstaculo1.altura = 70;
+		obstaculos.push(obstaculo1);
+		CrearSigArbol = false;
+	}
+
+    /*
+	for (var index in obstaculos) {
+		console.log(obstaculos[index]);
+	}*/
+
+}
+
+/**
+ * Dibujamos el obstaculo
+ */
+function DibujarObstaculos(){
+	let imgArbol = document.getElementById("obstaculo");
+	let ultPos;
+	for(let i in obstaculos){
+		if(obstaculos[i].posX >= (-obstaculo[i].ancho)){
+			obstaculo[i].posX-= velocidadJuego;
+			ctx.drawImage(imgobstaculo,obstaculo[i].posX,obstaculo[i].posY,obstaculo[i].ancho,obstaculo[i].altura);
+			if((obstaculo[i].posX <= dinosaurio.posX) && (obstaculo[i].posX > (dinosaurio.posX- velocidadJuego))) ArbolesSaltados++;
+		}
+		ultPos=i;
+	}
+	if(obstaculo[ultPos].posX < (canvas.width-180)) CrearSigArbol=true;
+}
+
+/**
+ * La funcion modifica la puntuacion basada en los obstaculos saltados
+ */
+function Puntuacion(){
+	puntos = ArbolesSaltados * 20;
+}
 
 /**
  *  Pintar el dinosaurio en el escenario, en una posicion establecida.
