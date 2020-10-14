@@ -94,7 +94,6 @@ var dinosaurio = new Elemento();
 var Obstaculo = new Elemento();
 var Obstaculo2 = new Elemento();
 var Fondo = new Elemento();
-window.addEventListener("load", Inicio);
 /**
  *  Pintar el dinosaurio en el escenario, en una posicion establecida.
  *  Se modificara solamente y.
@@ -107,7 +106,6 @@ function iniciarDino() {
     dinosaurio.galtura = 30;
     dinosaurio.gancho = 38;
     dinosaurio.gposX = Canvas.width / 2 - 100;
-    ;
     dinosaurio.gposY = Canvas.height / 2 + 30;
     dinosaurio.gnombre = "Dino";
     dinosaurio.gimagen = "";
@@ -181,3 +179,4 @@ function pintarDino() {
     var d = document.getElementById("dino");
     ctx.drawImage(d, dinosaurio.gposX, dinosaurio.gposY, dinosaurio.gancho, dinosaurio.galtura);
 }
+Inicio();
