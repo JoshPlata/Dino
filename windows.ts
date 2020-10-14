@@ -1,4 +1,5 @@
-let puntos: number;
+let velocidadJuego: number=5;
+let puntos: number = 0;
 
 interface Sprite{
     id: number;
@@ -52,8 +53,6 @@ class Elemento implements Sprite,Mov {
     get gimagen(): string{
         return this.imagen;
     }
-
-
     set gid(val: number){
          this.id=val;
     }
@@ -77,7 +76,17 @@ class Elemento implements Sprite,Mov {
     }
 }
 
+function subirVelocidadJuego(): void{
 
-function ModificarVelocidad(): void{
-
+    if(puntos==300) velocidadJuego=7;
+    if(puntos==600) velocidadJuego=8;
+    if(puntos==900) velocidadJuego=9;
+    if(puntos==1200) velocidadJuego=10;
+    if(puntos==1500) velocidadJuego=11;
+    if(puntos==1800) velocidadJuego=12;
+    if(puntos==2100) velocidadJuego=13;
+    if(puntos==2400) velocidadJuego=14;
+    if(puntos==2700) velocidadJuego=15;
+    if(puntos==3000) velocidadJuego=16
+    
 }
