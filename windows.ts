@@ -1,3 +1,5 @@
+let puntos: number;
+
 interface Sprite{
     id: number;
     altura: number;
@@ -75,3 +77,7 @@ class Elemento implements Sprite,Mov {
     }
 }
 
+
+function ModificarVelocidad(): void{
+
+}
