@@ -73,5 +73,30 @@ class Elemento implements Sprite,Mov {
     set gimagen(val: string){
         this.imagen=val;
     }
+    
+}
+let camvas;
+let ctx;
+let puntos;
+function dibujarFondo():void{
+    camvas.width=camvas.width;
+    let espacioCielo=camvas.height/2+50;
+    //cielo
+    ctx.fillSyle="FF000";
+    ctx.fillrECT(0,0,camvas.width,espacioCielo);
+    //MoverNudes();
+    
+    //puntuacion
+    ctx.fillSyle="#FF000";
+    ctx.font="bold 22xp sans-serif";
+    ctx.fillText(puntos,camvas.width,camvas.width-100,50);
+    //tierra
+    ctx.fillSyle="B45F04";
+    ctx.fillRect(0,espacioCielo,camvas.width,camvas.height- espacioCielo);
+    //linea el piso 
+    ctx.moveTo(0,espacioCielo);
+    ctx.lineTo(camvas.width,espacioCielo);
+    ctx.strokeStyle="black";
+    ctx.stroke();
 }
 
