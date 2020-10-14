@@ -3,6 +3,7 @@ let BoolSaltar:boolean=false;
 let Canvas;
 let velocidadJuego:number=5;
 let puntos:number=0;
+let ctx;
 
 interface Sprite{
     id: number;
@@ -90,8 +91,7 @@ let Fondo= new Elemento();
  *  Pintar el dinosaurio en el escenario, en una posicion establecida.
  *  Se modificara solamente y.
  */
-function dibujarPersonaje(){
-
+function iniciarDino(){
     /**
      *  Crear el objeto que se pintara.
      */          
@@ -102,7 +102,6 @@ function dibujarPersonaje(){
     dinosaurio.gposY=30;
     dinosaurio.gnombre="Dino";
     dinosaurio.gimagen="";        
-
 }
 
    /**
@@ -110,14 +109,14 @@ function dibujarPersonaje(){
  * Funcion que inicia el Canvas
  */
 
-function Inicio():void{
-        
-    AgregarEventoTeclado();
-    Canvas = document.getElementById("juego");
-    /*window.setInterval(function(){
-        FrameLoop()},1000/50);
-}*/
-
+function Inicio(){
+	Canvas = document.getElementById("juego");
+    ctx = Canvas.getContext("2d");
+    iniciarDino();
+	//PisoX = canvas.width/2 -100;
+	//PisoY = canvas.height/2+30;	
+	AgregarEventoTeclado();
+	//window.setInterval(function(){FrameLoop()},1000/50);
 }
 
 /**
